@@ -1,0 +1,91 @@
+:root{--bg1:#EAF6DF;--bg2:#B9E0AE;--glass:rgba(255,255,255,.5);--gb:rgba(255,255,255,.85);--ink:#123D22;--mute:#3C5C45;--g:#1B6B2F;--leaf:#1B6B2F;--gold:#9A7209;--bt:#fff;--blob:.5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#06120A;--bg2:#0E3A1D;--glass:rgba(255,255,255,.08);--gb:rgba(255,255,255,.2);--ink:#EEF6E6;--mute:#B4C8B0;--g:#6FCB82;--leaf:#58B56C;--gold:#EBC650;--bt:#06120A;--blob:.4}}
+:root[data-theme="dark"]{--bg1:#06120A;--bg2:#0E3A1D;--glass:rgba(255,255,255,.08);--gb:rgba(255,255,255,.2);--ink:#EEF6E6;--mute:#B4C8B0;--g:#6FCB82;--leaf:#58B56C;--gold:#EBC650;--bt:#06120A;--blob:.4}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;color-scheme:light dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,var(--bg1),var(--bg2));background-attachment:fixed;color:var(--ink);font:400 17px/1.7 'Hind Madurai',system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Fraunces','Hind Madurai',Georgia,serif;margin:0;line-height:1.12}
+a{color:inherit}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bl{position:absolute;border-radius:50%;filter:blur(70px);opacity:var(--blob);animation:wob 16s ease-in-out infinite alternate}
+.b1{width:420px;height:420px;background:#2FA24A;left:-100px;top:5%}
+.b2{width:360px;height:360px;background:#E8B923;right:-80px;top:35%;animation-delay:-5s}
+.b3{width:380px;height:380px;background:#1B8F5A;left:30%;bottom:-140px;animation-delay:-9s}
+@keyframes wob{to{transform:translate(70px,-50px) scale(1.18)}}
+.lf{position:absolute;top:-60px;left:var(--x);width:var(--s);height:var(--s);color:var(--leaf);opacity:.55;animation:fall var(--d) linear infinite;animation-delay:var(--l)}
+@keyframes fall{0%{transform:translate(0,-60px) rotate(0)}50%{transform:translate(40px,55vh) rotate(180deg)}100%{transform:translate(-30px,115vh) rotate(360deg)}}
+.glass{background:var(--glass);border:1px solid var(--gb);border-radius:22px;-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.w{max-width:1040px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;padding:12px 0}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;border-radius:999px}
+.brand{display:flex;align-items:center;gap:10px;font:700 17px 'Fraunces',Georgia,serif;color:var(--g)}
+.brand img{height:40px;width:auto}
+nav a{margin-left:18px;text-decoration:none;font-weight:500;color:var(--mute)}
+nav a:hover{color:var(--g)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:52px 0 44px}
+.hero h1{font-size:clamp(52px,10vw,104px);letter-spacing:.01em;color:var(--g);animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h2{font-size:clamp(24px,4.4vw,38px);margin-top:4px;animation:rise .9s .15s cubic-bezier(.2,.8,.2,1) both}
+.sub{color:var(--mute);margin:16px 0 6px;max-width:46ch;animation:rise .9s .3s cubic-bezier(.2,.8,.2,1) both}
+.tag{font-style:italic;color:var(--gold);font-weight:500;margin:0 0 24px;animation:rise .9s .42s cubic-bezier(.2,.8,.2,1) both}
+.btns{display:flex;flex-wrap:wrap;gap:12px;animation:rise .9s .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:999px;border:2px solid var(--g);background:var(--g);color:var(--bt);font:700 17px 'Hind Madurai',sans-serif;text-decoration:none;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sh 3.6s ease-in-out infinite}
+@keyframes sh{0%,60%{left:-70%}100%{left:140%}}
+.btn.o{background:transparent;color:var(--g)}
+.btn.o::after{display:none}
+.btn:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.scene{padding:18px;text-align:center;animation:rise 1s .3s cubic-bezier(.2,.8,.2,1) both}
+.scene svg{width:100%;max-width:300px;height:auto;display:block;margin:0 auto}
+.dr{animation:drp 2.8s cubic-bezier(.5,0,.9,.6) infinite}
+@keyframes drp{0%{transform:translateY(-20px) scale(.6);opacity:0}15%{opacity:1;transform:translateY(0) scale(1)}70%{transform:translateY(172px);opacity:1}71%,100%{transform:translateY(172px);opacity:0}}
+.rp{transform-origin:120px 262px;animation:rpl 2.8s ease-out infinite;opacity:0}
+.rp2{animation-delay:.25s}
+@keyframes rpl{0%,68%{transform:scale(.2);opacity:0}70%{opacity:.8}100%{transform:scale(1.6);opacity:0}}
+.scene b{display:block;font:700 20px 'Fraunces',Georgia,serif;color:var(--g)}
+.scene span{color:var(--mute);font-size:15px}
+.mq{overflow:hidden;white-space:nowrap;padding:14px 0;border-radius:0;border-left:0;border-right:0;position:relative;z-index:1}
+.mq div{display:inline-block;animation:mqa 28s linear infinite;font:600 20px 'Fraunces','Hind Madurai',serif;color:var(--g)}
+.mq i{font-style:normal;margin:0 26px;color:var(--gold)}
+@keyframes mqa{to{transform:translateX(-50%)}}
+section{padding:54px 0}
+section h2{font-size:clamp(30px,5vw,42px);color:var(--g);margin-bottom:8px}
+.lead{color:var(--mute);margin:0 0 26px;max-width:56ch}
+.ben{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ben div{padding:22px;transition:transform .25s}
+.ben div:hover{transform:translateY(-6px)}
+.ben b{display:block;font-size:20px;color:var(--g)}
+.ben span{color:var(--mute);font-size:16px}
+.prod{display:flex;gap:26px;align-items:center;padding:28px;max-width:640px;transition:transform .15s;will-change:transform}
+.vl{width:96px;height:auto;flex:none;animation:flo 4s ease-in-out infinite}
+@keyframes flo{50%{transform:translateY(-8px)}}
+.prod h3{font-size:28px;color:var(--g)}
+.prod p{margin:4px 0 12px;color:var(--mute)}
+.pr{font:700 38px 'Fraunces',Georgia,serif;color:var(--g);line-height:1;margin-bottom:14px}
+.pr small{font:500 16px 'Hind Madurai',sans-serif;color:var(--mute);margin-left:6px}
+.ord{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.box{padding:24px}
+label{display:block;font-weight:700;margin:14px 0 4px}
+label:first-child{margin-top:0}
+input,textarea{width:100%;font:400 17px 'Hind Madurai',sans-serif;padding:11px 13px;border:1.5px solid var(--gb);border-radius:12px;background:var(--glass);color:var(--ink)}
+textarea{min-height:84px;resize:vertical}
+.q{display:flex;align-items:center;gap:10px}
+.q button{width:44px;height:44px;border-radius:50%;border:2px solid var(--g);background:transparent;color:var(--g);font:700 22px/1 sans-serif;cursor:pointer}
+.q output{min-width:34px;text-align:center;font:700 22px 'Hind Madurai',sans-serif}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 14px;padding-top:14px;border-top:1px dashed var(--gb);font-weight:700}
+.tot strong{font:700 30px 'Fraunces',Georgia,serif;color:var(--g)}
+.err{color:#B3261E;font-size:15px;min-height:22px;margin:8px 0 0}
+@media (prefers-color-scheme:dark){.err{color:#FF8A80}}
+.act{display:flex;flex-wrap:wrap;gap:10px}
+.act .btn{flex:1 1 140px}
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:30px}
+.ct p{margin:0 0 12px}
+.ct a.ph{font:700 24px 'Hind Madurai',sans-serif;text-decoration:none;color:var(--g);display:block}
+footer{padding:28px 0 40px;color:var(--mute);font-size:15px;text-align:center;position:relative;z-index:1}
+footer img{height:64px;width:auto;margin-bottom:6px}
+.js .rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (max-width:760px){.hero,.ord,.ct,.ben{grid-template-columns:1fr}nav{display:none}.hero{padding-top:28px}.prod{flex-direction:column;text-align:center}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}.lf{display:none}}
